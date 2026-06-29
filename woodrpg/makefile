@@ -16,6 +16,7 @@ all: dldi akmenu4 fonts
 	cp fonts/*.pcf $(RELEASE)/__rpg/fonts
 	cp -r ui $(RELEASE)/__rpg/
 	cp -r language/English $(RELEASE)/__rpg/language/English
+	cp -r language/Japanese $(RELEASE)/__rpg/language/Japanese
 	cp dldi/rpg_nand/rpg_nand.dldi $(RELEASE)/__rpg/
 	cp dldi/rpg_sd/rpg_sd.dldi $(RELEASE)/__rpg/
 	tar --exclude=\.svn -czf $(RELEASE).tar.gz $(RELEASE)

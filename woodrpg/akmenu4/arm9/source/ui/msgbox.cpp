@@ -109,10 +109,10 @@ cMessageBox::cMessageBox( s32 x, s32 y, u32 w, u32 h, cWindow * parent, const st
     s16 nextButtonX = size().x;
     s16 buttonPitch = 60;
     s16 buttonY = size().y - _buttonNO->size().y - 4;
-    // 下一个要画的按钮的位置
+    // Position of the next button to draw
     if( _style & MB_NO ) {
-        // 在nextButtonX位置画 NO 按钮
-        // nextButtonX -= 按钮宽度 + 空白区宽度
+        // Draw NO button at nextButtonX position
+        // nextButtonX -= button width + blank area width
         buttonPitch = _buttonNO->size().x + 8;
         nextButtonX -= buttonPitch;
         _buttonNO->setRelativePosition( cPoint(nextButtonX, buttonY) );
@@ -121,8 +121,8 @@ cMessageBox::cMessageBox( s32 x, s32 y, u32 w, u32 h, cWindow * parent, const st
 
 
     if( _style & MB_YES ) {
-        // 在nextButtonX位置画 YES 按钮
-        // nextButtonX -= 按钮宽度 + 空白区宽度
+        // Draw YES button at nextButtonX position
+        // nextButtonX -= button width + blank area width
         buttonPitch = _buttonYES->size().x + 8;
         nextButtonX -= buttonPitch;
         _buttonYES->setRelativePosition( cPoint(nextButtonX, buttonY) );
@@ -131,8 +131,8 @@ cMessageBox::cMessageBox( s32 x, s32 y, u32 w, u32 h, cWindow * parent, const st
 
 
     if( _style & MB_CANCEL ) {
-        // 在nextButtonX位置画 CANCEL 按钮
-        // nextButtonX -= 按钮宽度 + 空白区宽度
+        // Draw CANCEL button at nextButtonX position
+        // nextButtonX -= button width + blank area width
         buttonPitch = _buttonCANCEL->size().x + 8;
         nextButtonX -= buttonPitch;
         _buttonCANCEL->setRelativePosition( cPoint(nextButtonX, buttonY) );
@@ -140,8 +140,8 @@ cMessageBox::cMessageBox( s32 x, s32 y, u32 w, u32 h, cWindow * parent, const st
     }
 
     if( _style & MB_OK ) {
-        // 在nextButtonX位置画 OK 按钮
-        // nextButtonX -= 按钮宽度 + 空白区宽度
+        // Draw OK button at nextButtonX position
+        // nextButtonX -= button width + blank area width
         buttonPitch = _buttonOK->size().x + 8;
         nextButtonX -= buttonPitch;
         _buttonOK->setRelativePosition( cPoint(nextButtonX, buttonY) );
@@ -238,7 +238,7 @@ cWindow& cMessageBox::loadAppearance(const std::string& aFileName )
 
 u32 messageBox( cWindow * parent, const std::string & title, const std::string & msg, u32 style )
 {
-    // check point 如果出现奇怪的对话框消失问题就检查这里
+    // Check point: if strange dialog disappear issues occur, check here
     cMessageBox msgbox( 12, 36, 232, 120, parent, title, msg, style );
     //cMessageBox msgbox( 0, 0, 256, 192, parent, text, style );
 
