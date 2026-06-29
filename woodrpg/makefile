@@ -4,7 +4,7 @@ export LIBIORPG		:=	$(CURDIR)/libiorpg
 export LIBIOAK2I	:=	$(CURDIR)/libioak2i
 export LIBIOR4IDSN	:=	$(CURDIR)/libior4idsn
 export LIBELM  		:=	$(CURDIR)/libelm
-export LIBUNDS 		:=	$(CURDIR)/libunds
+export LIBUNDS        :=      $(DEVKITPRO)/libnds
 RELEASE			:=	akmenu_3in1
 
 all: dldi akmenu4 fonts
@@ -104,7 +104,8 @@ libelm/lib/libelm.a:
 
 libunds: libunds/lib/libunds7.a libunds/lib/libunds9.a
 
-libunds/lib/libunds7.a libunds/lib/libunds9.a:
+libunds/lib/libunds7.a libunds/lib/libunds9.a: ; @true
+#
 	cd libunds && $(MAKE)
 
 libiorpg:

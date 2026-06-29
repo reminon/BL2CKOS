@@ -1,3 +1,9 @@
+#ifndef FIFO_PACK_VALUE32
+#define FIFO_CHANNEL_BITS 4
+#define FIFO_CHANNEL_SHIFT (32-FIFO_CHANNEL_BITS)
+#define FIFO_VALUE32_MASK ((1<<FIFO_CHANNEL_SHIFT)-1)
+#define FIFO_PACK_VALUE32(ch,v) (((ch)<<FIFO_CHANNEL_SHIFT)|((v)&FIFO_VALUE32_MASK))
+#endif
 /*
     romloader.cpp
     Copyright (C) 2007 Acekard, www.acekard.com
@@ -90,12 +96,12 @@ bool loadRom( const std::string & filename, const std::string & savename, u32 fl
 	fseek(ldr, hed[8], SEEK_SET);
 	ldrBuf=(u8*)hed[9];
 	fread(ldrBuf, hed[11], 1, ldr);
-	__NDSHeader->arm9executeAddress = hed[9];
+	__NDSHeader->arm9executeAddress = (void*)hed[9];
 
 	fseek(ldr, hed[12], SEEK_SET);
 	ldrBuf=(u8*)hed[13];
 	fread(ldrBuf, hed[15], 1, ldr);
-	__NDSHeader->arm7executeAddress = hed[13];
+	__NDSHeader->arm7executeAddress = (void*)hed[13];
 	fclose(ldr);
 
 #if defined(_STORAGE_rpg)
@@ -125,11 +131,11 @@ bool loadRom( const std::string & filename, const std::string & savename, u32 fl
 
     // copy loader's arm7 code
     memcpy( (void *)0x023FA000, akloader_arm7_bin, akloader_arm7_bin_size );
-    __NDSHeader->arm7executeAddress = 0x023FA000;
+    __NDSHeader->arm7executeAddress = (void*)0x023FA000;
 
     // copy loader's arm9 code
     memcpy( (void *)0x023c0000, akloader_arm9_bin, akloader_arm9_bin_size );
-    __NDSHeader->arm9executeAddress = 0x023c0000;
+    __NDSHeader->arm9executeAddress = (void*)0x023c0000;
 
     dbg_printf( "load done\n" );
 */

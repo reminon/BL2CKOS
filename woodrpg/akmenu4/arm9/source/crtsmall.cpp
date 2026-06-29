@@ -19,7 +19,7 @@
 #include <new>
 #include <nds.h>
 
-const std::nothrow_t std::nothrow={};
+const std::nothrow_t std::nothrow;
 
 static void Halt(void) __attribute__((__noreturn__));
 
@@ -62,19 +62,19 @@ void operator delete[] (void *ptr)
 
 namespace std
 {
-  void __throw_bad_alloc(void)
+  void __attribute__((weak)) __throw_bad_alloc(void)
   {
     Halt();
   }
-  void __throw_length_error(const char*)
+  void __attribute__((weak)) __throw_length_error(const char*)
   {
     Halt();
   }
-  void __throw_out_of_range(const char*)
+  void __attribute__((weak)) __throw_out_of_range(const char*)
   {
     Halt();
   }
-  void __throw_logic_error(const char*)
+  void __attribute__((weak)) __throw_logic_error(const char*)
   {
     Halt();
   }
@@ -82,39 +82,39 @@ namespace std
 
 extern "C"
 {
-  void __gxx_personality_v0(void)
+  void __attribute__((weak)) __gxx_personality_v0(void)
   {
     Halt();
   }
-  void __cxa_end_catch(void)
+  void __attribute__((weak)) __cxa_end_catch(void)
   {
     Halt();
   }
-  void __cxa_begin_catch(void)
+  void __attribute__((weak)) __cxa_begin_catch(void)
   {
     Halt();
   }
-  void __cxa_rethrow(void)
+  void __attribute__((weak)) __cxa_rethrow(void)
   {
     Halt();
   }
-  void __cxa_end_cleanup(void)
+  void __attribute__((weak)) __cxa_end_cleanup(void)
   {
     Halt();
   }
-  void __cxa_pure_virtual(void)
+  void __attribute__((weak)) __cxa_pure_virtual(void)
   {
     Halt();
   }
-  void __aeabi_unwind_cpp_pr0(void)
+  void __attribute__((weak)) __aeabi_unwind_cpp_pr0(void)
   {
     Halt();
   }
-  void __aeabi_unwind_cpp_pr1(void)
+  void __attribute__((weak)) __aeabi_unwind_cpp_pr1(void)
   {
     Halt();
   }
-  void __aeabi_unwind_cpp_pr2(void)
+  void __attribute__((weak)) __aeabi_unwind_cpp_pr2(void)
   {
     Halt();
   }

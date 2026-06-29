@@ -114,6 +114,9 @@ static inline void ioRpgMemCopy( void * dest, const void * src, u32 length )
 }
 
 #define CARD_COMMAND32   ((vuint32*)0x040001A8)
+#ifndef CARD_COMMAND
+#define CARD_COMMAND     ((vu8*)0x040001A8)
+#endif
 static inline void ioRpgPushData( const void * data, u16 length )
 {
     if( 0 == ((u32)data & 0x03) ) {

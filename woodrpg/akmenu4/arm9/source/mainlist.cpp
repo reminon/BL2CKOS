@@ -1,3 +1,4 @@
+#include "dircompat.h"
 /*
     mainlist.cpp
     Copyright (C) 2007 Acekard, www.acekard.com
@@ -257,7 +258,7 @@ bool cMainList::enterDir( const std::string & dirName )
         {
           while(dirnext(dir,longFilename,&st)==0)
           {
-              attr=st.st_spare1;
+              attr=st.st_spare4[0];
               std::string lfn( longFilename );
 
               // st.st_mode & S_IFDIR indicates a directory

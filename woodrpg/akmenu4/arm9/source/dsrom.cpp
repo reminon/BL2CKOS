@@ -72,7 +72,7 @@ bool DSRomInfo::loadDSRomInfo( const std::string & filename, bool loadBanner )
         return true;
     } else {
         _isDSRom = ETrue;
-        if( header.arm7destination >= 0x037F8000 || 0x23232323 == gamecode(header.gameCode) ) {//23->'#'
+        if( (u32)header.arm7destination >= 0x037F8000 || 0x23232323 == gamecode(header.gameCode) ) {//23->'#'
             _isHomebrew = ETrue;
         }
 

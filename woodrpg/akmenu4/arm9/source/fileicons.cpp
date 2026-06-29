@@ -67,15 +67,15 @@ cFileIcons::cFileIcons()
 
 void cFileIcons::LoadFolder(cIconPaths& aPaths,const std::string& aFolder)
 {
-  DIR_ITER* dir=diropen(aFolder.c_str());
+  DIR* dir=opendir(aFolder.c_str());
   if(NULL!=dir)
   {
-    struct stat st;
-    char longFilename[MAX_FILENAME_LENGTH];
-    while(dirnext(dir,longFilename,&st)==0)
+    struct dirent* ent;
+    while((ent=readdir(dir))!=NULL)
     {
-      if((st.st_mode&S_IFDIR)==0)
+      if(ent->d_type!=DT_DIR)
       {
+        char* longFilename=ent->d_name;
         size_t len=strlen(longFilename);
         if(len>4)
         {
@@ -84,11 +84,12 @@ void cFileIcons::LoadFolder(cIconPaths& aPaths,const std::string& aFolder)
           {
             *extName=0;
             aPaths.insert(cFileIconItem(aFolder,longFilename));
+            *extName='.';
           }
         }
       }
     }
-    dirclose(dir);
+    closedir(dir);
   }
 }
 

@@ -197,7 +197,7 @@ bool cPopMenu::processTouchMessage( const cTouchMessage & msg )
     return ret;
 }
 
-u32 cPopMenu::itemBelowPoint( const cPoint & pt )
+size_t cPopMenu::itemBelowPoint( const cPoint & pt )
 {
     cPoint menuPos(position().x + _barLeft, position().y + _itemTopLeftPoint.y - 2); cSize menuSize(barWidth(), _itemHeight * _items.size());
     cRect rect(menuPos, menuPos + menuSize);

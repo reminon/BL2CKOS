@@ -36,12 +36,12 @@ CFLAGS	+=	$(INCLUDE) -DARM9 -fno-dwarf2-cfi-asm -D_STORAGE_$(STORAGE)
 CXXFLAGS	:=	$(CFLAGS) -fno-rtti -fno-exceptions
 
 ASFLAGS	:=	-g $(ARCH) -march=armv5te -mtune=arm946e-s
-LDFLAGS	=	-specs=../../specs/ds_arm9.specs -g $(ARCH) -mno-fpu -Wl,-Map,$(notdir $*.map)
+LDFLAGS	=	-specs=ds_arm9.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lelm -lio$(STORAGE) -lunds9
+LIBS	:= -lelm -lio$(STORAGE) -lnds9
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing

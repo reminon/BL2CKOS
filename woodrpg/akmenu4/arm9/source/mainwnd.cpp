@@ -1,3 +1,4 @@
+#include "dircompat.h"
 /*
     mainwnd.cpp
     Copyright (C) 2007 Acekard, www.acekard.com
@@ -637,7 +638,7 @@ void cMainWnd::setParam(void)
   std::sort(_values.begin(),_values.end());
   for(size_t ii=0;ii<_values.size();++ii)
   {
-    if(0==stricmp(_values[ii].c_str(),gs().uiName.c_str())) uiIndex=ii;
+    if(0==strcasecmp(_values[ii].c_str(),gs().uiName.c_str())) uiIndex=ii;
   }
   uiNames=_values;
   settingWnd.addSettingItem(LANG("ui style","text"),_values,uiIndex);
@@ -665,7 +666,7 @@ void cMainWnd::setParam(void)
   std::sort(_values.begin(),_values.end());
   for(size_t ii=0;ii<_values.size();++ii)
   {
-    if(0==stricmp(_values[ii].c_str(),gs().langDirectory.c_str())) langIndex=ii;
+    if(0==strcasecmp(_values[ii].c_str(),gs().langDirectory.c_str())) langIndex=ii;
   }
   langNames=_values;
   settingWnd.addSettingItem(LANG("language","text"),_values,langIndex);

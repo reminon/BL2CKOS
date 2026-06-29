@@ -1,3 +1,10 @@
+#include <nds/fifocommon.h>
+#ifndef FIFO_PACK_VALUE32
+#define FIFO_CHANNEL_BITS 4
+#define FIFO_CHANNEL_SHIFT (32-FIFO_CHANNEL_BITS)
+#define FIFO_VALUE32_MASK ((1<<FIFO_CHANNEL_SHIFT)-1)
+#define FIFO_PACK_VALUE32(ch,v) (((ch)<<FIFO_CHANNEL_SHIFT)|((v)&FIFO_VALUE32_MASK))
+#endif
 /*
     main.cpp
     Copyright (C) 2007 Acekard, www.acekard.com
@@ -169,7 +176,7 @@ int main(void)
     bool loadSucc = loadFile( (char *)filename, originSpeed, changedSpeed, sizeMask, hasRSA );
     if( loadSucc ) {
         dbg_printf("%08x\n", __NDSHeader->cardControl13 );
-        if( (__NDSHeader->arm7destination >= 0x037F8000 || 0x23232323 == gamecode(__NDSHeader->gameCode)) ) { // 0x23232323 = "####", homebrew programs
+        if( ((u32)__NDSHeader->arm7destination >= 0x037F8000 || 0x23232323 == gamecode(__NDSHeader->gameCode)) ) { // 0x23232323 = "####", homebrew programs
 #ifndef NDS_BOOT
             if( NULL == strstr((char *)filename,_MENU_NAME) ) {
                 // DLDI patch

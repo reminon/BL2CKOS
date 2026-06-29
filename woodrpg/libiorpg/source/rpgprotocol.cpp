@@ -71,7 +71,7 @@ void ioRpgSendCommand( u32 command[2], u32 pageSize, u32 latency, void * buffer 
     {
         cardCtrl = REG_ROMCTRL;
         if( cardCtrl & CARD_DATA_READY  ) {
-            u32 data = CARD_DATA_RD;
+            u32 data = CARD_DATA_READY;
             if( useBuf32 && count < pageSize) {
                 *pbuf32++ = data;
             }
@@ -123,7 +123,7 @@ bool ioRpgWaitCmdBusy( bool forceWait )
         {
             cardCtrl = REG_ROMCTRL;
             if( cardCtrl & CARD_DATA_READY  ) {
-                data = CARD_DATA_RD;
+                data = CARD_DATA_READY;
                 count += 4;
                 if( 0x00000fc2 == data ) {
                     timeout = false;

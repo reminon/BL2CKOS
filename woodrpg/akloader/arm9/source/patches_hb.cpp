@@ -41,7 +41,7 @@ void CHbPatcher::Patch(void)
   {
     if(ii&&!copy_data_itcm) break;
     u32* begin=(u32*)__NDSHeader->arm9destination;
-    u32* end=(u32*)(copy_data_itcm?0x023c0000:(__NDSHeader->arm9destination+__NDSHeader->arm9binarySize));
+    u32* end=(u32*)(copy_data_itcm?0x023c0000:((u32)__NDSHeader->arm9destination+__NDSHeader->arm9binarySize));
     if(ii)
     {
       begin=(u32*)0x06040000;

@@ -140,7 +140,7 @@ static bool loadSaveList(const std::string& filename,std::vector<SAVE_INFO_EX>& 
     if(1!=fread(&header,sizeof(header),1,f)) break;
     if(header.marker!=SAVE_INFO_EX_HEADER_MAGIC) break;
     data=new u8[header.itemSize*header.itemCount];
-    u32 copiedSize=std::min(header.itemSize,sizeof(SAVE_INFO_EX));
+    u32 copiedSize=std::min(header.itemSize,(u32)sizeof(SAVE_INFO_EX));
     if(header.itemCount!=fread(data,header.itemSize,header.itemCount,f)) break;
     buffer.resize(header.itemCount);
     for(u32 ii=0;ii<header.itemCount;ii++)

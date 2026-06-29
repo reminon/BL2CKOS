@@ -1,3 +1,9 @@
+#ifndef FIFO_PACK_VALUE32
+#define FIFO_CHANNEL_BITS 4
+#define FIFO_CHANNEL_SHIFT (32-FIFO_CHANNEL_BITS)
+#define FIFO_VALUE32_MASK ((1<<FIFO_CHANNEL_SHIFT)-1)
+#define FIFO_PACK_VALUE32(ch,v) (((ch)<<FIFO_CHANNEL_SHIFT)|((v)&FIFO_VALUE32_MASK))
+#endif
 /*
     reset.cpp
     Copyright (C) 2008 somebody

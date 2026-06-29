@@ -1,3 +1,4 @@
+#include "dircompat.h"
 /*
     files.cpp
     Copyright (C) 2007 Acekard, www.acekard.com

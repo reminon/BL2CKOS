@@ -120,7 +120,7 @@ bool loadFile(const char* filename,u32& originSpeed,u32& changedSpeed,u32& sizeM
   }
 
   // load_arm7
-  if( __NDSHeader->arm7destination >= 0x037F8000 || 0x23232323 == gamecode(__NDSHeader->gameCode) ) //23->'#'
+  if( (u32)__NDSHeader->arm7destination >= 0x037F8000 || (u32)0x23232323 == gamecode(__NDSHeader->gameCode) ) //23->'#'
   {
     u32 arm7_code=__NDSHeader->arm7romOffset;
     u32 arm7_size=__NDSHeader->arm7binarySize;
