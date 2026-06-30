@@ -1,55 +1,65 @@
 # BL2CK OS Kernel
 
-Author：BL2CK  
-Date：2016-2-16  
-OS Version：1.30.3
+**Author:** BL2CK  
+**Date:** 2016-2-16  
+**OS Version:** 1.30.3  
+**Fork maintainer:** reminon
 
-### 部分代码参考以下作者或机构的开源项目
+## Credits
 
-Author：Acekard  
-Project：Acekard R.P.G  
-Description：Homebrew  
+This project is based on and references the following open source projects:
 
-Author：YWG(yellow wood goblin) & Taiju Yamada  
-Project：WOOD & WAIO  
-Description：Homebrew & Loader & libio & dldi  
+| Author | Project | Description |
+|--------|---------|-------------|
+| Acekard | Acekard R.P.G | Homebrew |
+| YWG (yellow wood goblin) & Taiju Yamada | WOOD & WAIO | Homebrew, Loader, libio, dldi |
+| devkitPRO | devkitARM, libnds, libelm | Toolchain & libraries |
 
-Author：devkitPRO  
-Project：devkitARM & libnds & libelm  
+*BL2CK Software Co. Ltd. All Rights Reserved.*
 
-### BL2CK SoftWare Co.Ltd All Rights Reserved.
+---
 
-# BL2CK SOFTWARE CHANGELOG 
+## Fork Changes (reminon)
 
-[ BL2CK OS V1.30.3 ]
-Bulid 1.30.3 2015-12-20
-+ Updated the game database to v6554
-+ $ 优化外部配置linkconfig
-+ $ 优化language的部分释义
+- Modernized build system for devkitARM r65 / GCC 14
+- Replaced bundled libunds with system libnds
+- Fixed newlib syscall API changes (void* file descriptors)
+- Fixed C++17 compatibility issues
+- Added DSpico DLDI support
+- Translated Chinese source comments to English
+- Renamed language folders for filesystem compatibility
+- English and Japanese languages included by default
 
-[ BL2CK OS V1.30.2 ]
-Bulid 1.30.2 2015-11-1
-+ Added the ability to exit the kernel by pressing the “X” key on the main menu.
-+ Added the ability to exit safemode.
-+ Implemented gbaframe in SLOT-2 GBA mode.
-+ $ 优化language的部分释义
+---
 
-[ BL2CK OS V1.30.1 ]
-Bulid 1.30.1 2015-10-30
-+ 新增外部配置linkconfig
-+ $ Optimized romloader,romlauncher,mainwnd code.
-+ $ 采用外部loader索引
-+ $ 采用外部reset索引
-+ ! 内核结构的重建
-+ ! 修复savelist异常
+## Changelog
 
-[ BL2CK OS V1.30.0 ]
-Bulid 1.30.0 2015-10-25
-+ Updated the game database to v6536
-+ ! Fixed some UI issues.
+### BL2CK OS V1.30.3 — 2015-12-20
+- Updated game database to v6554
+- Optimized external linkconfig configuration
+- Optimized language string definitions
 
-[ BL2CK OS ]
-Bulid 1.00.0-1.20.0
-+ Changelog not available.
+### BL2CK OS V1.30.2 — 2015-11-01
+- Added ability to exit the kernel by pressing X on the main menu
+- Added ability to exit safemode
+- Implemented GBA frame in SLOT-2 GBA mode
+- Optimized language string definitions
 
-### Powered by BL2CK SOFTWARE
+### BL2CK OS V1.30.1 — 2015-10-30
+- Added external linkconfig configuration
+- Optimized romloader, romlauncher, mainwnd code
+- Adopted external loader index
+- Adopted external reset index
+- Rebuilt kernel structure
+- Fixed savelist crash
+
+### BL2CK OS V1.30.0 — 2015-10-25
+- Updated game database to v6536
+- Fixed some UI issues
+
+### BL2CK OS V1.00.0 — V1.20.0
+- Changelog not available
+
+---
+
+*Powered by BL2CK Software*
